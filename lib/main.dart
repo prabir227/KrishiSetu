@@ -37,13 +37,22 @@ class UserSelectPage extends StatefulWidget {
 }
 
 class MyHomeState extends State<UserSelectPage>{
-  @override
   bool fCheck=false;
   bool cCheck=false;
   int pageRoute=0;
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: FractionalOffset(0.5,0.7),
+              colors: [Color(0xff76C92B),Color(0xffffffff)],
+
+            )
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -141,16 +150,7 @@ class MyHomeState extends State<UserSelectPage>{
               flex: 110,)
           ],
         ),
-        height: double.infinity,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-                end: FractionalOffset(0.5,0.7),
-              colors: [Color(0xff76C92B),Color(0xffffffff)],
 
-          )
-        ),
       ),
     );
   }
