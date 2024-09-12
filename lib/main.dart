@@ -1,9 +1,7 @@
-import 'package:flutter/cupertino.dart';  // Imports Cupertino design widgets
-import 'package:flutter/material.dart';  // Imports Material design widgets
-import 'package:flutter/widgets.dart';  // Imports basic Flutter widgets
-import 'package:krishi_setu/contractorLogin.dart';  // Imports contractor login page
-import 'package:krishi_setu/farmerLogin.dart';  // Imports farmer login page
-
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:krishi_setu/login.dart';
 void main() {
   runApp(const MyApp());  // Runs the app
 }
@@ -162,29 +160,18 @@ class MyHomeState extends State<UserSelectPage> {
                   ),
                 ),
               )
-                  : ElevatedButton(
-                onPressed: () {
-                  // Navigates to the appropriate page based on user selection
-                  if (pageRoute == 1) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => FarmerLoginPage()),  // Navigate to FarmerLoginPage
-                    );
-                  } else if (pageRoute == 2) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ContractorLoginPage()),  // Navigate to ContractorLoginPage
-                    );
-                  }
-                },
-                child: Text("NEXT", style: TextStyle(fontSize: 21, color: Colors.white)),  // Next button text
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xff1A6158),  // Button color
-                  minimumSize: Size(300, 0),  // Button size
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5),  // Rounded corners
-                  ),
-                ),
+            ):ElevatedButton(onPressed: (){
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => LoginPage(user: pageRoute)));
+            },
+              child: Text("NEXT",style: TextStyle(fontSize: 21,color: Colors.white),),
+
+              style: ElevatedButton.styleFrom(backgroundColor: Color(0xff1A6158),
+                minimumSize: Size(300, 0),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5)
+                )
+
               ),
               flex: 63,
             ),
