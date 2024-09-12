@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:krishi_setu/contractorLogin.dart';
-import 'package:krishi_setu/farmerLogin.dart';
+import 'package:krishi_setu/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -124,15 +123,8 @@ class MyHomeState extends State<UserSelectPage>{
                 )
               )
             ):ElevatedButton(onPressed: (){
-              if(pageRoute==1) {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => FarmerLoginPage()));
-              }
-              else if(pageRoute==2){
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ContractorLoginPage()));
-
-              }
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => LoginPage(user: pageRoute)));
             },
               child: Text("NEXT",style: TextStyle(fontSize: 21,color: Colors.white),),
 
