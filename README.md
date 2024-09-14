@@ -81,6 +81,7 @@ The application provides the following modules for both farmers and contractors:
 ## Getting Started
 To get started with the project, follow these steps:
 
+
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-repository-url.git
