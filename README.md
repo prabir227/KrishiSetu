@@ -11,7 +11,7 @@ Farmers often face fluctuating incomes and unpredictable market conditions, maki
 ## Key Features
 The application provides the following modules for both farmers and contractors:
 
-### 1. User Role Selection
+### 1. User Role Selection  
 - Users can select their role as either a **Farmer** or a **Contractor** when first accessing the platform. This leads to tailored dashboards and features for each role.
 
 ### 2. Authentication System
