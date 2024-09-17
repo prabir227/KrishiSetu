@@ -1,62 +1,35 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:krishi_setu/ReusableWidgets.dart';
-import 'package:krishi_setu/signUp.dart';
-import 'package:krishi_setu/home_page.dart'; // Import the homepage file
 import 'package:krishi_setu/marketplace.dart';
 
 // The main LoginPage widget that takes 'user' as a parameter
-class LoginPage extends StatefulWidget {
-  final int user;
+class SignUpPage extends StatefulWidget {
+  final bool user;
   // Constructor requires the 'user' parameter
-  LoginPage({required this.user});
+  SignUpPage({required this.user});
 
   @override
-  State<StatefulWidget> createState() => LoginPageState(user);
+  State<StatefulWidget> createState() => SignUpPageState(user);
 }
 
 // State class for the LoginPage
-class LoginPageState extends State<LoginPage> {
-  final FirebaseAuth authInstance = FirebaseAuth.instance;
+class SignUpPageState extends State<SignUpPage> {
+  // Boolean to differentiate between two types of users
+
+  bool user = true;
 
   // Constructor that sets the user type
-  LoginPageState(int user) {
-    if (user == 2) this.user = false;
+  SignUpPageState(bool user) {
+    this.user = user;
   }
 
   // Controllers for handling text input in text fields
-  final userController = TextEditingController();
-  final passController = TextEditingController();
-
-  // Boolean to differentiate between two types of users
-  bool user = true;
-
-  // Function to handle login
-  Future<void> logIn() async {
-    try {
-      UserCredential userCredential = await authInstance.signInWithEmailAndPassword(
-        email: userController.text,
-        password: passController.text,
-      );
-      // If login is successful, navigate to the homepage
-      if (userCredential.user != null) {
-        Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => HomePage()),
-              (Route<dynamic> route) => false,// Replace with your homepage widget
-        );
-      }
-    } catch (e) {
-      // Handle error
-      print("Error logging in: $e");
-      // Optionally show an alert or error message to the user
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Login failed. Please try again.')),
-      );
-    }
-  }
+  var userController = TextEditingController();
+  var passController = TextEditingController();
+  var usernameController = TextEditingController();
+  var passverifController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -114,28 +87,22 @@ class LoginPageState extends State<LoginPage> {
 
             // Welcome text
             Text(
-              "Welcome back! Glad",
+              "Create your account",
               style: TextStyle(
                 color: Color(0xff266116),
                 fontSize: 26,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Text(
-              "to see you, Again!",
-              style: TextStyle(
-                color: Color(0xff266116),
-                fontSize: 26,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            SizedBox(height: 20,),
+            reusableTextField("Username", Icon(Icons.person), usernameController),
 
-            SizedBox(height: 50),
+            SizedBox(height: 27),
 
             // Email or phone number input field
             reusableTextField("Email or phone number", Icon(Icons.email_outlined), userController),
 
-            SizedBox(height: 30),
+            SizedBox(height: 27),
 
             // Password input field
             Container(
@@ -145,28 +112,25 @@ class LoginPageState extends State<LoginPage> {
                 children: [
                   reusableTextField("Password", Icon(Icons.keyboard_alt_outlined), passController),
                   // Forgot password link
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      TextButton(
-                        onPressed: () {},
-                        child: Text("Forgot Password?"),
-                      ),
-                    ],
-                  ),
                 ],
               ),
             ),
+            SizedBox(height: 27,),
+            reusableTextField("Reenter password", Icon(Icons.keyboard_alt_outlined), passverifController),
 
             SizedBox(height: 20),
 
             // Login button
             ElevatedButton(
               onPressed: () {
-                logIn(); // Call the login function
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => MarketplacePage()),
+                );
               },
               child: Text(
-                "LOGIN",
+                "Proceed",
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -185,27 +149,14 @@ class LoginPageState extends State<LoginPage> {
             SizedBox(height: 10),
 
             // Social login option
-            Text("or login with"),
-            SizedBox(height: 8),
-            OutlinedButton(
-              onPressed: () {},
-              child: FaIcon(FontAwesomeIcons.google),
-            ),
-
             // Sign-up option
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Don't have an account?"),
+                Text("Already have an account?"),
                 TextButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => SignUpPage(user: user)),
-                    );
-                  },
-                  child: Text("Sign Up"),
+                  onPressed: () {},
+                  child: Text("Log In"),
                 ),
               ],
             ),
