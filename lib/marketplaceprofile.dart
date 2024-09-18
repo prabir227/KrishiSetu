@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:krishi_setu/DummyChatPage.dart';
 
 import 'ChatRoom.dart';
 

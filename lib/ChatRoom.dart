@@ -318,8 +318,9 @@ class _ChatRoomState extends State<ChatRoom> {
                                 String personEmail = widget.userMap['email'];
                                 String cropName = "Wheat"; // Example crop name
                                 Map<String, dynamic> priceMap = (await _firestore.collection('price').doc('OFNWLCVvG7p1Dzv2M3Us').get()).data() as Map<String, dynamic>;
-                                print(priceMap['current_price']['message']);
+                                // print(priceMap['current_price']['message']);
                                 String price = priceMap['current_price']['message'];
+                                // String price = "200";
                                 String quantity = "100"; // Example quantity
 
                                 // Create a map with the contract details
