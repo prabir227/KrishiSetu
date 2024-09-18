@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:krishi_setu/ReusableWidgets.dart';
+import 'package:krishi_setu/homepage.dart';
 import 'package:krishi_setu/marketplace.dart';
 
 // The main LoginPage widget that takes 'user' as a parameter
@@ -126,7 +127,7 @@ class SignUpPageState extends State<SignUpPage> {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => MarketplacePage()),
+                      builder: (context) => HousePage()),
                 );
               },
               child: Text(

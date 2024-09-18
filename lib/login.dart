@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:krishi_setu/ReusableWidgets.dart';
+import 'package:krishi_setu/homepage.dart';
 import 'package:krishi_setu/signUp.dart';
 import 'package:krishi_setu/home_page.dart'; // Import the homepage file
 import 'package:krishi_setu/marketplace.dart';
@@ -44,7 +45,7 @@ class LoginPageState extends State<LoginPage> {
       if (userCredential.user != null) {
         Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (context) => HomePage()),
+          MaterialPageRoute(builder: (context) => HousePage()),
               (Route<dynamic> route) => false,// Replace with your homepage widget
         );
       }

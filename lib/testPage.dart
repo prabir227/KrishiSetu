@@ -1,6 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating/flutter_rating.dart';
-import 'marketplaceprofile.dart';  // Import the ProductDetailPage here
+import 'package:krishi_setu/homepage.dart';
 
 class MarketplacePage extends StatefulWidget {
   @override
@@ -75,15 +76,7 @@ class MarketplacePageState extends State<MarketplacePage> {
               child: Column(
                 children: items.map((item) {
                   return InkWell(
-                    onTap: () {
-                      // Navigate to ProductDetailPage when an item is tapped
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ProductDetailPage(item: item),
-                        ),
-                      );
-                    },
+                    onTap: () {},
                     child: Container(
                       margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 15.0),
                       decoration: BoxDecoration(
@@ -98,13 +91,13 @@ class MarketplacePageState extends State<MarketplacePage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(10), // Adjust the radius as needed
                               child: Container(
-                                width: 120,
-                                height: 120,
+                                width: 120, // Adjust width
+                                height: 120, // Adjust height
                                 child: Image.asset(
                                   item["image"]!,
-                                  fit: BoxFit.cover,
+                                  fit: BoxFit.cover, // Ensures the image fits without padding
                                 ),
                               ),
                             ),
@@ -118,9 +111,9 @@ class MarketplacePageState extends State<MarketplacePage> {
                                   StarRating(
                                     rating: double.parse(item["rating"]!),
                                     color: Colors.orange,
-                                    size: 20.0,
+                                    size: 20.0, // Size of the stars
                                   ),
-                                  SizedBox(height: 4),
+                                  SizedBox(height: 4), // A small space between the rating and description
                                   Text(item["description"]!,
                                       style: TextStyle(fontSize: 14)),
                                   Text("State: ${item["state"]}",

@@ -3,6 +3,7 @@ import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:krishi_setu/profile_page.dart';
+import 'package:krishi_setu/widgets/product_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -83,47 +84,9 @@ class _HomePageState extends State<HomePage> {
             ),
           ];
         },
-        body: pages[currentPageIndex], // Render the current page based on index
+        body: ExplorePage(), // Render the current page based on index
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        currentIndex: currentPageIndex,
-        onTap: (index) {
-          setState(() {
-            currentPageIndex = index;
-          });
-        },
-        backgroundColor: const Color(0xffAEDC81), // Light green background
-        selectedItemColor: const Color(0xff266116), // Green color for selected icon
-        unselectedItemColor: Colors.black, // Black for unselected icons
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Home",
-            activeIcon: Icon(IconlyBold.home),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.storefront_outlined),
-            label: "Market",
-            activeIcon: Icon(IconlyBold.call),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.people),
-            label: "Community",
-            activeIcon: Icon(IconlyBold.buy),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_basket_outlined),
-            label: "Mandi",
-            activeIcon: Icon(Icons.shopping_basket_outlined),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: "Profile",
-            activeIcon: Icon(IconlyBold.profile),
-          ),
-        ],
-      ),
+
     );
   }
 }
