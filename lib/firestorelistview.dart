@@ -10,12 +10,10 @@ class _FirestoreListViewState extends State<FirestoreListView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Contract details'),
-      ),
+      appBar: AppBar(title: Text("contracts",)),
       body: StreamBuilder<QuerySnapshot>(
         // Fetching the collection from Firestore
-        stream: FirebaseFirestore.instance.collection('yourCollectionName').snapshots(),
+        stream: FirebaseFirestore.instance.collection('contracts').snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return Center(child: CircularProgressIndicator());
@@ -29,22 +27,47 @@ class _FirestoreListViewState extends State<FirestoreListView> {
             itemBuilder: (context, index) {
               // Extracting data from each document
               final Map<String, dynamic> data = documents[index].data() as Map<String, dynamic>;
-              String contractorName = data['contractor_name'];
-              String crop = data['crop'];
+              String contractorName = data['name'];
+              String crop = data['crop_type'];
               String price = data['price'];
               String quantity = data['quantity'];
 
               // Returning each ListTile with an icon
-              return ListTile(
-                leading: Icon(Icons.agriculture),  // Icon on the left side
-                title: Text(contractorName),       // Contractor name
-                subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Crop: $crop"),
-                    Text("Price: $price"),
-                    Text("Quantity: $quantity"),
-                  ],
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: 110,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black),
+                    borderRadius: BorderRadius.circular(15),
+                      color: Color(0xffAEDC81)
+                  ),
+                  child: Container(
+
+
+
+                    child: ListTile(
+                      leading: Column(
+
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          CircleAvatar(
+                            radius: 25,
+                            child: Image.asset("asset/images/contractor.png"),
+                          ),
+                        ],
+                      ),  // Icon on the left side
+                      title: Text(contractorName),       // Contractor name
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Crop: $crop"),
+                          Text("Price: $price"),
+                          Text("Quantity: $quantity"),
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
               );
             },

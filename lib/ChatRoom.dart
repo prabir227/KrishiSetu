@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import 'Contract.dart';
+
 class ChatRoom extends StatefulWidget {
   final String chatRoomId;
   final Map<String, dynamic> userMap;
@@ -286,6 +288,7 @@ class _ChatRoomState extends State<ChatRoom> {
                             } else {
                               Map<String, dynamic> priceMap = snapshot.data!.data() as Map<String, dynamic>;
 
+
                               return Container(
                                 padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),  // Add padding
                                 margin: EdgeInsets.all(10),
@@ -314,10 +317,26 @@ class _ChatRoomState extends State<ChatRoom> {
                                 // Handle Accept action
                                 print("accepted bro");
 
+                                Map<String, dynamic> priceMap = (await _firestore.collection('price').doc('OFNWLCVvG7p1Dzv2M3Us').get()).data() as Map<String, dynamic>;
+                                //
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => SecondPage(
+                                      email: widget.userMap['email'],
+                                      name: 'Prabir',
+                                      price: priceMap['current_price']['message'],
+                                      quantity: "100",
+                                      crop_type: "Wheat"
+                                    ),
+                                  ),
+                                );
+
+                                //
+
                                 // Assuming you have the necessary details
                                 String personEmail = widget.userMap['email'];
                                 String cropName = "Wheat"; // Example crop name
-                                Map<String, dynamic> priceMap = (await _firestore.collection('price').doc('OFNWLCVvG7p1Dzv2M3Us').get()).data() as Map<String, dynamic>;
                                 // print(priceMap['current_price']['message']);
                                 String price = priceMap['current_price']['message'];
                                 // String price = "200";

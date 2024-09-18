@@ -35,7 +35,7 @@ class ActualHomePageState extends State<ActualHomePage>{
                           )
                       ),
                       onPressed: (){
-                        Navigator.pushReplacement(
+                        Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => FirestoreListView()),
