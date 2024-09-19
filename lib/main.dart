@@ -16,7 +16,9 @@ class MyApp extends StatelessWidget {
   // The root widget of the application.
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'KrishiSetu', // Sets the title of the app
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Color(0xff1A6158)), // Sets primary theme color

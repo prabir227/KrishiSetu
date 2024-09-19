@@ -31,7 +31,7 @@ class ProductCard extends StatelessWidget {
             Stack(
               children: [
                 Container(
-                  height: 120,
+                  height: 100,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     image: DecorationImage(
